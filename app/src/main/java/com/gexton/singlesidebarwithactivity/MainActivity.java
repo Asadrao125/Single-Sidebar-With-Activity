@@ -1,4 +1,4 @@
-package com.gexton.singlesidebarwithactivity.method_3;
+package com.gexton.singlesidebarwithactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -10,8 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
-import com.gexton.singlesidebarwithactivity.R;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -64,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                activity.finishAffinity();
-                System.exit(0);
+                dialogInterface.dismiss();
             }
         });
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
