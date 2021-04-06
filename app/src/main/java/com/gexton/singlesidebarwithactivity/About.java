@@ -2,9 +2,14 @@ package com.gexton.singlesidebarwithactivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class About extends MainActivity {
     DrawerLayout drawerLayout;
@@ -18,40 +23,50 @@ public class About extends MainActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         tvToolbarTitle = findViewById(R.id.tvToolbarTitle);
         tvToolbarTitle.setText("About");
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.green, this.getTheme()));
+        }
     }
 
-   /* public void clickMenu(View view) {
-        MainActivity.openDrawer(drawerLayout);
+    public void Dashbord(View view) {
+        redirectActivity(this, Dashbord.class);
     }
 
-    public void clickLogo(View view) {
-        MainActivity.closeDrawer(drawerLayout);
+    public void clickMenu(View view) {
+        openDrawer(drawerLayout);
     }
 
-    public void clickHome(View view) {
-        MainActivity.redirectActivity(About.this, Home.class);
+    public void FindProperty(View view) {
+        redirectActivity(this, Dashbord.class);
     }
 
-    public void clickDashbord(View view) {
-        MainActivity.redirectActivity(About.this, Dashbord.class);
+    public void MyProperties(View view) {
+        redirectActivity(this, Dashbord.class);
     }
 
-    public void clickAboutUs(View view) {
-        MainActivity.closeDrawer(drawerLayout);
+    public void MyContacts(View view) {
+        redirectActivity(this, Dashbord.class);
     }
 
-    public void clickLogout(View view) {
-        MainActivity.logout(this);
+    public void Messages(View view) {
+        redirectActivity(this, Dashbord.class);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        MainActivity.closeDrawer(drawerLayout);
-    }*/
+    public void SavedSearches(View view) {
+        redirectActivity(this, Dashbord.class);
+    }
 
-    public void clickAboutUs(View view) {
-        MainActivity.closeDrawer(drawerLayout);
+    public void MyProfile(View view) {
+        redirectActivity(this, Dashbord.class);
+    }
+
+    public void SupportTickets(View view) {
+        redirectActivity(this, Dashbord.class);
+    }
+
+    public void Logout(View view) {
+        Toast.makeText(About.this, "Logout", Toast.LENGTH_SHORT).show();
     }
 
 }

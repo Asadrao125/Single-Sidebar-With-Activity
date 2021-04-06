@@ -8,8 +8,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -19,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.green, this.getTheme()));
+        }
+
     }
 
     public void clickMenu(View view) {
@@ -29,49 +36,47 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
-    public void clickLogo(View view) {
-        closeDrawer(drawerLayout);
-    }
-
     public static void closeDrawer(DrawerLayout drawerLayout) {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
 
-    public void clickHome(View view) {
-        redirectActivity(this, Home.class);
-    }
-
-    public void clickDashbord(View view) {
+    public void Dashbord(View view) {
         redirectActivity(this, Dashbord.class);
     }
 
-    public void clickAboutUs(View view) {
-        redirectActivity(this, About.class);
+    public void FindProperty(View view) {
+        redirectActivity(this, Dashbord.class);
     }
 
-    public void clickLogout(View view) {
-        logout(this);
+    public void MyProperties(View view) {
+        redirectActivity(this, Dashbord.class);
     }
 
-    public static void logout(final Activity activity) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Logout");
-        builder.setMessage("Are you sure ?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        builder.show();
+    public void MyContacts(View view) {
+        redirectActivity(this, Dashbord.class);
+    }
+
+    public void Messages(View view) {
+        redirectActivity(this, Dashbord.class);
+    }
+
+    public void SavedSearches(View view) {
+        redirectActivity(this, Dashbord.class);
+    }
+
+    public void MyProfile(View view) {
+        redirectActivity(this, Dashbord.class);
+    }
+
+    public void SupportTickets(View view) {
+        redirectActivity(this, Dashbord.class);
+    }
+
+    public void Logout(View view) {
+        Toast.makeText(MainActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+        closeDrawer(drawerLayout);
     }
 
     @Override
@@ -87,4 +92,8 @@ public class MainActivity extends AppCompatActivity {
         activity.finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
